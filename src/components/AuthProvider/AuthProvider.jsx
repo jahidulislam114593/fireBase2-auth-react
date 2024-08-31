@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   GithubAuthProvider,
+  FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "../FireBase/fireBase.init";
 
@@ -15,6 +16,7 @@ const AuthProvider = ({ children }) => {
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
   const googleLogin = () => {
     return signInWithPopup(auth, googleProvider);
@@ -22,6 +24,10 @@ const AuthProvider = ({ children }) => {
 
   const githubLogin = () => {
     return signInWithPopup(auth, githubProvider);
+  };
+
+  const facebookLogin = () => {
+    return signInWithPopup(auth, facebookProvider);
   };
 
   const registerUser = (email, password) => {
@@ -38,6 +44,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     googleLogin,
     githubLogin,
+    facebookLogin,
   };
   return (
     <div>
