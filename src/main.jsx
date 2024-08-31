@@ -8,6 +8,8 @@ import Root from "./components/Root/Root.jsx";
 import Login from "./components/Login/Login.jsx";
 import Register from "./components/Register/Register.jsx";
 import AuthProvider from "./components/AuthProvider/AuthProvider.jsx";
+import About from "./components/About/About.jsx";
+import ProtectRoute from "./components/ProtectRoute/ProtectRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/about",
+        element: (
+          <ProtectRoute>
+            <About></About>
+          </ProtectRoute>
+        ),
       },
     ],
   },
