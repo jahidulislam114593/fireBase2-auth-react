@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { loginUser, googleLogin, setUser, githubLogin, facebookLogin } =
+  const { loginUser, googleLogin, setUser, githubLogin, facebookLogin, user } =
     useContext(AuthContext);
 
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -23,7 +26,11 @@ const Login = () => {
   const handleFacebookLogin = () => {
     facebookLogin().then((res) => setUser(res.user));
   };
-
+  useEffect(() => {
+    if (user) {
+      navigate(location.state);
+    }
+  }, [user]);
   return (
     <div className="w-full max-w-md p-4 mx-auto border-2 border-blue-500 rounded-xl">
       <h2 className="text-2xl py-4">Login Page</h2>

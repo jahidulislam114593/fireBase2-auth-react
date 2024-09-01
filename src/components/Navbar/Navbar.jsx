@@ -54,11 +54,14 @@ const Navbar = () => {
           <li>
             <NavLink to={"/register"}>Register</NavLink>
           </li>
-          {user && (
+          {/* {user && (
             <li>
               <Link to="/about">About</Link>
             </li>
-          )}
+          )} */}
+          <li>
+            <Link to="/about">About</Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">
